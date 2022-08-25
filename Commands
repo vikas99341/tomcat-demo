@@ -1,7 +1,8 @@
 Spin a EC2 instance and login .
 Become a root user
-Install Java : yum install java-1.8* -y
+Install Java : yum install java -y
 Install tomcat :
+cd /opt
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz
 tar -xvzf apache-tomcat-9.0.62.tar.gz
 mv apache-tomcat-9.0.62 tomcat
@@ -9,6 +10,8 @@ rm -rf apache-tomcat-9.0.62.tar.gz
 cd tomcat/bin
 ./shutdown.sh
 ./startup.sh
+chown -R ec2-user:ec2-user tomcat
+
 
 check your machine on port <public-ip>:8080
 find / -name context.xml

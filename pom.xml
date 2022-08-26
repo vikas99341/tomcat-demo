@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sample.webproject</groupId>
-  <artifactId>tomcat-demo</artifactId>
+  <artifactId>SampleWebApp</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>tomcat-demo Maven Webapp</name>
+  <name>SampleWebApp Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -16,14 +16,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>tomcat-demo</finalName>
-	<pluginManagement>
-		<plugins>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.2.2</version>
-			</plugin>
-		</plugins>
-	</pluginManagement>
+    <finalName>SampleWebApp</finalName>
   </build>
 </project>

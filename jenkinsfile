@@ -1,18 +1,32 @@
-node {  
-    def mvnHome = tool name: 'Maven home', type: 'maven'
-    stage('SCM-Checkout') { 
-        git branch: 'main', credentialsId: 'git-hub-credentials', 
-		url: 'https://github.com/vikas99341/tomcat-demo.git' 
-    }
-    stage('Maven clean-compile') { 
-        sh '${mvnHome}/bin/mvn clean compile'
-    }
-    stage('Maven package') { 
-        sh '${mvnHome}/bin/mvn clean package'
-    }
-    stage('Tomcat-Deployment') { 
-        sshagent(['ec2-user-tomcat']) {
-			sh 'scp -o StrictHostKeyChecking=no target/tomcat-demo.war ec2-user@172.31.93.94:/opt/tomcat/webapps'
-		}
+pipeline {
+    agent any
+    tools {
+      maven 'maven home'
+        }
+
+    stages {
+        stage('SCM-Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'git-credentials', 
+                url: 'https://github.com/vikas99341/tomcat-demo.git'
+            }
+        }
+        stage('Clean-Compile') {
+            steps {
+                sh "mvn clean compile"
+            }
+        }
+        stage('Package') {
+            steps {
+                sh "mvn package"
+            }
+        }
+        stage('Tomcat-Deployment') {
+            steps {
+                sshagent(['ec2-user']) {
+                    sh "scp -o StrictHostKeyChecking=no target/tomcat-demo.war ec2-user@172.31.45.219:/opt/tomcat/webapps"
+                }
+            }
+        }
     }
 }

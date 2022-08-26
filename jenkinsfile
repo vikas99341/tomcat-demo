@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-      maven 'maven home'
+          maven 'maven home'
         }
 
     stages {
@@ -13,19 +13,19 @@ pipeline {
         }
         stage('Clean-Compile') {
             steps {
-                sh "mvn clean compile"
+                sh 'mvn clean compile'
             }
         }
         stage('Package') {
             steps {
-                sh "mvn package"
+                sh 'mvn package'
             }
         }
         stage('Tomcat-Deployment') {
             steps {
-                sshagent(['ec2-user']) {
-                    sh "scp -o StrictHostKeyChecking=no target/tomcat-demo.war ec2-user@172.31.45.219:/opt/tomcat/webapps"
-                }
+                sshagent(['tomcat-ssh-credentials']) {
+					sh "scp -o StrictHostKeyChecking=no target/tomcat-demo.war ec2-user@172.31.45.219:/opt/tomcat/webapps"
+				}
             }
         }
     }

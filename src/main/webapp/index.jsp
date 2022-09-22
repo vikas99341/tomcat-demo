@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2> Hello Tomcat from AWS web server !!!</h2>
-<h3> I am learning Jenkins & Tomcat </h3>
+<h2> Hello ken welcome to Tomcat Demo !!!</h2>
+<h3> Learning java and tomcat is fun </h3>
 </body>
 </html>

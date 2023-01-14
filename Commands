@@ -1,11 +1,11 @@
 Spin a EC2 instance and login .
 Become a root user
-Install Java : yum install java -y
+Install Java : amazon-linux-extras install java-openjdk11 -y
 Install tomcat :
 cd /opt
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz
-tar -xvzf apache-tomcat-9.0.62.tar.gz
-mv apache-tomcat-9.0.62 tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
+tar -xvzf apache-tomcat-9.0.71.tar.gz
+mv apache-tomcat-9.0.71 tomcat
 rm -rf apache-tomcat-9.0.62.tar.gz
 cd tomcat/bin
 ./shutdown.sh

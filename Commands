@@ -1,17 +1,23 @@
-Spin a EC2 instance and login .
+1. Spin a EC2 instance and login .
 Become a root user
-Install Java : amazon-linux-extras install java-openjdk11 -y
-Install tomcat :
+
+2. Install Java : sudo dnf install java-11-amazon-corretto-devel
+
+3. Install tomcat :
 cd /opt
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
-tar -xvzf apache-tomcat-9.0.71.tar.gz
-mv apache-tomcat-9.0.71 tomcat
-rm -rf apache-tomcat-9.0.62.tar.gz
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.zip
+unzip apache-tomcat-9.0.85.zip
+rm -rf apache-tomcat-9.0.85.zip
+mv apache-tomcat-9.0.85 tomact
+
 cd tomcat/bin
+chmod +x startup.sh
+chmod +x shutdown.sh
+chmod 777 catalina.sh
+
 ./shutdown.sh
 ./startup.sh
 chown -R ec2-user:ec2-user tomcat
-
 
 check your machine on port <public-ip>:8080
 find / -name context.xml
@@ -34,4 +40,11 @@ nano tomcat-users.xml
 ./startup.sh ==> Tomcat should be up and running.
 
 
+===============================================================
+Create a new java - maven web app project using on jenkins server :
+
+
+mvn archetype:generate -DgroupId=com.sample.webproject -DartifactId=SampleWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+Once the files are created push them to new github repository
 
